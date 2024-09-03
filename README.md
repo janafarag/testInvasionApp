@@ -29,3 +29,6 @@ cats and dogs folder are  folders with only the picture and index.html. These ar
 
 ## Kubernetes declarations
 This folder contains yaml files used in each Kubernetes chapter of the workshop. These are all sample definitions of the most common Kubernetes objects introduced in the KuberNETes workshop.
+
+## Service Discovery Chapter scripts
+THe script used for metadata filtering in the CloudMap chapter
