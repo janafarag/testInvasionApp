@@ -4,7 +4,9 @@ from fastapi.staticfiles import StaticFiles
 
 app = FastAPI()
 
-# app.mount("/imgs", StaticFiles(directory="imgs"), name='images')
+app.mount("/code/app/imgs", StaticFiles(directory="/code/app/imgs"), name='images')
+
+# default route
 @app.get("/", response_class=HTMLResponse)
 def serve():
     return """
@@ -14,7 +16,22 @@ def serve():
         </head>
         <body>
             <h1><center>Welcome to the Dog World!</center></h1>
-            <center><img src="imgs/dogs.png"></center>
+            <center><img src="/code/app/imgs/dogs.png"></center>
+        </body>
+    </html>
+    """
+
+# /dog-service for ALB
+@app.get("/dog-service", response_class=HTMLResponse)
+def serve():
+    return """
+    <html>
+        <head>
+            <title>World Invasion Homepage</title>
+        </head>
+        <body>
+            <h1><center>Welcome to the Dog World!</center></h1>
+            <center><img src="/code/app/imgs/dogs.png"></center>
         </body>
     </html>
     """

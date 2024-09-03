@@ -1,0 +1,6 @@
+
+# make the script executable
+chmod +x setup.py
+
+# execute script
+python setup.py --account_id <YOUR_AWS_ACCOUNT_ID> --region <YOUR_AWS_REGION> --vpc_id <YOUR_VPC_ID>

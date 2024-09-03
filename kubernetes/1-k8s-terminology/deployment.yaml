@@ -1,0 +1,25 @@
+# deployment or stateful set
+# replicaset
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fast-dog-api-deployment
+  labels:
+    app: fast-api-dog
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fast-api-dog
+  template:
+    metadata:
+      labels:
+        app: fast-api-dog
+    spec:
+      containers:
+      - name: dog-website
+        image: jfarag242/k8s-sample-app-dogs:0.0.2
+        ports:
+        - containerPort: 80

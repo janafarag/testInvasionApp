@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo-pod
+spec:
+  containers:
+  - name: demo-pod
+    imagePullPolicy: Always
+    image: jfarag242/demo-container:0.0.1
+    command: ["/bin/bash", "-c", "--"]
+    args: ["while true; do sleep 30; done;"]
+
+    ports:
+    - containerPort: 80

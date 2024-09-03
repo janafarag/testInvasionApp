@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fast-api-dogs
+spec:
+  containers:
+  - name: dog-website
+    image: jfarag242/k8s-sample-app-dogs:0.0.2
+    ports:
+    - containerPort: 80

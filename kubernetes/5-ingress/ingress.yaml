@@ -1,0 +1,33 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internal
+    alb.ingress.kubernetes.io/target-type: ip
+  labels:
+    app: http-service
+  name: http-service
+spec:
+  ingressClassName: alb
+  rules:
+  - host: alb.ingress.private.animalinvasion.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: /dog-service
+        backend:
+          service:
+            name: dog-service-loadbalancer
+            port:
+              number: 80
+
+  - host: alb.ingress.private.animalinvasion.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: /cat-service
+        backend:
+          service:
+            name: cat-service-loadbalancer
+            port:
+              number: 80

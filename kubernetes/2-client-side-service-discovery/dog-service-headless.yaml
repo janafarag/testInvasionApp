@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dog-service-headless
+  labels:
+    app: dog-service-headless
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dog-service-headless
+  template:
+    metadata:
+      labels:
+        app: dog-service-headless
+    spec:
+      containers:
+      - name: dog-website
+        image: jfarag242/k8s-sample-app-dogs:0.0.2
+        ports:
+        - containerPort: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dog-service-headless
+spec:
+  selector:
+    app: dog-service-headless
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  clusterIP: "None"
+---
+
